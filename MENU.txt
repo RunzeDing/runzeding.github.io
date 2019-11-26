@@ -1,0 +1,6 @@
+Quick links
+    Home                [index.html]
+    Biography           [biography.html]
+    Publication   [publication.html]
+    News             [news.html]
+    Sources             [sources.html]
