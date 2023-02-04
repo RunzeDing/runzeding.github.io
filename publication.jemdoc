@@ -1,0 +1,51 @@
+# jemdoc: menu{MENU.txt}{publication.html}
+# jemdoc: nofooter
+= Publication
+\n
+*Corresponding author, \[J xx] for Journal, \[C xx] for Conference,\[P xx] for Patent.
+\n
+== Journals
+\n
+- \[J12] *Ding, R.*, Bai, S., Dong, K., Chirarattananon, P. (2023). Aerodynamic Effect for Collision-Free Reactive Navigation of a
+Small Quadcopter, npj Robotics, under review
+
+- \[J11] *Ding, R.*, Jia, H., Chirarattananon, P. (2023). Quadrolltor: A Reconfigurable Quadrotor with Controlled Rolling, IEEE/ASME
+Transactions on Mechatronics, under review. 
+
+- \[J10] *Ding, R.*, Hsiao, Y. H., Jia, H., Bai, S., Chirarattananon, P. (2022). Passive wall tracking for a rotorcraft with tilted and
+ducted propellers using proximity effects. IEEE Robotics and Automation Letters, 7(2), 1581-1588.  \[[./Publication/Journals/J10.pdf PDF]]
+
+- \[J09] Jia, H., Bai, S., *Ding, R.*, Shu, J., Deng, Y., Khoo, B. L., Chirarattananon, P. (2022). A quadrotor with a passively reconfig-
+urable airframe for hybrid terrestrial locomotion. IEEE/ASME Transactions on Mechatronics, 27(6), 4741-4751. \[[./Publication/Journals/J09.pdf PDF]]
+
+- \[J08] Bai, S., *Ding, R.*, Chirarattananon, P. (2022). A micro aircraft with passive variable-sweep wings. IEEE Robotics and
+Automation Letters, 7(2), 4016-4023.  \[[./Publication/Journals/J08.pdf PDF]]
+
+- \[J 07]	*DING Runze*, \*Xiao Lingfei. \'Robust Control for Electric Fuel Pump with Variant Nonlinear Loads Based on a New Combined Sliding Mode Surface'. /International Journal of Control, Automation and Systems/. (2019) 17: 716  \[[./Publication/Journals/J07.pdf PDF]].\n
+
+- \[J 06]	*DING Runze*, \*Xiao Lingfei. \'Quadratic Integral Sliding Mode Control for Nonlinear Harmonic Gear Drive Systems with Mismatched Uncertainties.' /Mathematical Problems in Engineering/ 2018.1(2018):1-18.  \[[./Publication/Journals/J06.pdf PDF]]\n
+
+- \[J 05]	Zhou li, Ye zhifeng, \*Xiao Lingfei, *DING Runze*,\'Gain Scheduling Control for Aero-engine Based on Guardian Maps Theory', /MACHINERY & ELECTRONICS/.2018,36(5):18-23  \[[./Publication/Journals/J05.pdf PDF]]\n
+
+- \[J 04]	Du Yanbin, \*Xiao Lingfei, Chen Yuhan, *DING Runze*. \'Aircraft Engine Gas Path Fault Diagnosis Based on Hybrid PSO-TWSVM.' /Transactions of Nanjing University of Aeronautics and Astronautics/ 2(2018).  \[[./Publication/Journals/J04.pdf PDF]]\n
+
+- \[J 03]	\*Xiao, Lingfei and *DING Runze* \'Uncertainty and Disturbance Estimator based Control of Active Suspensions with a Hydraulic Actuator.'/ Information Technology & Control/45.4(2017)  \[[./Publication/Journals/J03.pdf PDF]]\n
+
+- \[J 02]	*DING Runze*, \*Xiao Lingfei, and Jiang Bin. \'Robust Fault Tolerant Control for Aircraft Longitudinal Attitude Sensor Faults.'/ Journal of Shanghai Institute of Technology/ (2015).  \[[./Runzeding-by-Jemdoc/Publication/Journals/J02.pdf PDF]]\n
+
+- \[J 01]	Huang Yakun, *DING Runze*, \*Zhao zhiwen, \'Timing optimization and simulation of traffic lights in main road.'/ Shandong Industrial Technology/, 2014(9):55-57.  \[[./Publication/Journals/J01.pdf PDF]]\n
+
+== Conferences
+\n
+- \[C 03]	*DING Runze*, \*Xiao Lingfei. \'Research of Sliding Mode Control in Electric Fuel Pump System'. /Proceedings of 19th Conference on Aeronautical Automatic Control, Chinese Society of Aeronautics and Astronautics/ (2018).  \[[./Publication/Conferences/C03.pdf PDF]]\n
+- \[C 02]	*DING Runze*,\ *Xiao Lingfei. \'Quadratic integral Sliding Mode Control in Turboshaft Engines'. /Proceedings of 18th Conference on Aeronautical Automatic Control, Chinese Society of Aeronautics and Astronautics/ (2016).  \[[./Publication/Conferences/C02.pdf PDF]]\n
+- \[C 01]	*DING Runze*, \*Xiao Lingfei, Hu Jixiang. \'Guranteed Cost Fault Tolerant Control for STOVL Aircraft Engines.'/ Proceedings of CPCC 2016/ (2016).  \[[./Publication/Conferences/C01.pdf PDF]]\n
+
+== Patents
+\n
+- \[P 02]	Xiao Lingfei, *DING Runze*, et.al, \'Robust Fault Tolerant Method for Sensor Fault in Electrical Fuel Pump system',[P]. CN 2017110310135   \[[./Publication/Patents/P02.pdf PDF]]\n
+- \[P 01]	Xiao Lingfei, *DING Runze*. \'Harmonic gear transmission quadratic integral sliding mode controller design', [P]. CN 106844967 A. 2017.   \[[./Publication/Patents/P01.pdf PDF]]\n
+
+
+
+

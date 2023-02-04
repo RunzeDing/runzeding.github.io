@@ -1,0 +1,412 @@
+# jemdoc: nofooter
+= Tutorial:Indoor Navigation and Control of Bebop2 running Arducopter with Feedback From Optitrack - Set up.
+\n
+This tutorial is for developing environment set up and test for ardupilot in non-gps environment.
+\n
+It is organized as follow: \n
+\n
+1. Start with Windows Subsystem for Linux.\n
+\n
+2. Update Linux system on Bebop2.\n
+\n
+3. Start with Ardupilot.\n
+\n
+4. Build and compile ardupilot.\n
+\n
+5. Start with ROS and mavros.\n
+\n
+6. Connect motion capture system with vehicle.\n
+\n
+7. State monitor and hover control\n
+
+= 1. Start with Windows Subsystem for Linux
+\n
+
+Microsoft have provide a build-in Linux subsystem(WSL-Windows Subsystem for Linux). You can follow the official docs to get you to a Linux enviroment. Also, you may use virtual machine or a Linux Pc. Just make sure you have a Linux developing environment. Ubuntu is preferable.
+
+= 2. Update Linux System on Bebop2
+\n
+From Nov 2015, the version of Linux ships in the bebop is too old to run Ardupilot and must be upgraded. 
+The first step is downloading a custom version as the [https://ardupilot.org/dev/docs/building-for-bebop-on-linux.html ardupilot development docs ] told.\n
+
+1. Power up your Bebop.
+
+2. Connect to Wi-Fi network (BebopDrone-XXXX).
+\n
+3. Install adb (android debug tool).
+~~~
+{}{}
+sudo apt-get install android-tools-adb
+~~~
+4. 
+Connect to the Bebop¡¯s adb server on port 9050:
+~~~
+{}{}
+cd /Your Path that have bebopdrone_update.plf.
+
+adb connect 192.168.42.1:9050
+~~~
+5. Remount the system partition as writeable:
+~~~
+{}{}
+adb shell mount -o remount,rw /
+~~~
+6. Push the new version of Linux to the Bebop2:
+~~~
+{}{}
+adb cd /data/ftp/internal_000/
+
+adb push bebopdrone_update.plf /data/ftp/internal_000/
+~~~
+7. Connect to the Bebop by telnet
+~~~
+{}{}
+telnet 192.168.42.1
+~~~
+8. Sync and reboot
+~~~
+{}{}
+sync
+
+reboot
+~~~
+
+
+= 3. Start with Ardupilot
+\n
+The official docs are provided [https://ardupilot.org/dev/docs/building-setup-linux.html here].\n
+
+1. Get git.
+~~~
+{}{}
+sudo apt-get update
+
+sudo apt-get install git
+
+sudo apt-get install gitk git-gui
+~~~
+2. Install some required packages.
+~~~
+{}{}
+Tools/environment_install/install-prereqs-ubuntu.sh -y
+
+. ~/.profile
+~~~
+3. Install armhf toolchain.
+download parrot-tools-linuxgnutools-2016.02-linaro_1.0.0-2_amd64.deb from Internet\n
+and install it by using:
+~~~
+{}{}
+sudo dpkg -i parrot-tools-linuxgnutools-2016.02-linaro_1.0.0-2_amd64.deb
+
+export PATH=/opt/arm-2016.02-linaro/bin:$PATH
+~~~
+4. Clone ArduPilot repository.
+~~~
+{}{}
+git clone https://github.com/your-github-userid/ardupilot
+
+cd ardupilot
+
+git submodule update --init --recursive  // *Update is important!*
+
+~~~
+= 4. Build and Compile Ardupilot\n
+1. Set build parameters for bebop2 and build 
+~~~
+{}{}
+cd /You path/ardupilot
+
+./waf configure --board=bebop --static
+
+./waf build
+~~~
+2. Uploading firmware.\n
+The compiled firmware in binary form will be stored in +ardupilot\/arducopter\/build\/bebop\/bin\/arducopter+.\n
+The easiest way to upload it is using Mission Planner. Get Mission Planner on your machine and direct to upload firmware. Choose +costume firmware+ and pick the builded one (in +ardupilot\/arducopter\/build\/bebop\/bin\/arducopter+)\n
+Then follow the instruction in Mission Planner to finish this.
+
+= 5. Start with ROS and mavros
+
+The communication of ardupilot is using MAVLINK protocol. It is a powerful protocol with fruitable support. You should install ROS and its package for MAVLINK, name mavros. \n
+
+1. Get start with ROS.\n
+    Install ROS on your PC, follow the [http://wiki.ros.org/melodic/Installation/Ubuntu official tutorial].\n
+2. Build a Catkin workspace\n
+    A +catkin workspace+ is a folder where you modify, build, and install catkin packages. Again, follow the [http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment official tutorial], which is much helpful.\n
+3. Install mavros\n
+    Clone the mavros repository and build it.
+~~~
+{}{}
+cd /Your Path/catkin_ws/src
+
+git clone  https://github.com/mavlink/mavros.git
+
+cd /Your Path/catkin_ws     or directly    cd ..
+
+catkin_make         (this command with automatically build all packages in /Your Path/catkin_ws/src)
+~~~
+= 6. Connect Motion Capture System with Vehicle
+Take the optitrack system as an example.A good tutorial from +Denise Ratasich+ can be found [https://tuw-cpsg.github.io/tutorials/optitrack-and-ros/ here].\n
+1. Connect your PC with motion capture system and make sure they are in a same local networks.\n
+2. Creat a rigid body in motion capture system.And broadcast it using vrpn.\n
+3. Install vrpn_client_ros package
+~~~
+{}{}
+cd /Your Path/catkin_ws/src
+
+git clone  https://github.com/ros-drivers/vrpn_client_ros.git
+ 
+cd /Your Path/catkin_ws     or directly    cd ..
+
+catkin_make 
+~~~
+4. Find the launch file for vprn_client_ros
+~~~
+{}{}
+roscd vprn_client_ros
+
+cd launch
+
+chmod a+w sample.launch (give all user right to write)
+~~~
+5. Modified launch file.\n
+The ardupilot will ignore high frequency external position feedback. To make sure the data works, we need to change update frequency to 30hz.
+~~~
+{}{}
+vi sample.launch
+
+change the frequency to 30.0 (Make sure you are in INSERT mode)
+
+zz (command of save and quit)
+~~~
+6. Run vrpn_client_ros
+~~~
+{}{}
+roslaunch vrpn_client_ros sample.launch server:= <your server(machien that runs Motive) IP>
+~~~
+7. Check the rostopic to verify the effectiveness. 
+~~~
+{}{}
+rostopic list
+
+rostopic echo /vrpn_client_ros/RigidBody1/pose
+~~~
+8. Remap the data from  vrpntopic to mavros topic.
+~~~
+{}{}
+roscd mavros // change directory to mavros
+
+cd launch
+
+chmod a+w apm_config.yaml  // add write to all user
+
+vi apm_config.yaml // open and modify apm_config.yaml
+~~~
+Paste following line into apm_config.yaml
+~~~
+{}{}
+
+<remap from="/mavros/mocap/pose" to="/vrpn_client_node/RigidBody1/pose" />
+~~~
+save and quit apm_config.yaml.\n
+Then the ardupilot will find external data from +\/vrpn_client_node\/RigidBody1\/pose+\n
+The EKF in ardupilot will automatically take the x,y,z and yaw information from external, and roll, pitch from IMU.\n
+
+= 7. State monitor and hover control\n
+1. Connect to Optitrack
+~~~
+{}{}
+roslaunch vrpn_client_ros sample.launch server:=10.10.10.1 
+
+// the IP address of machine running Motive is 10.10.10.1
+~~~
+2. Connect Bebop2\n
+
+Connect to Bebop2 wifi (BebeopDrone-XXXX)\n
+
+and open a new ternimal in ubuntu. type in following command:
+~~~
+{}{}
+roslaunch mavros apm.launch fcu_url:=udp://:14551@192.168.42.1
+
+// launch mavros and connect to bebop2 by udp, bebop2 IP address is 192.168.42.1:14551, with ground station bridge active.
+~~~
+If successs, you will see 
+~~~
+{}{}
+EKF2 IMU0 is using external nav data EKF2 IMU0 initial pos NED = xx,xx,xx (m)
+
+EKF2 IMU0 ext nav yaw alignment complete
+~~~
+3. Set home position
+New a python script to automatically do this.
+~~~
+{}{}
+touch set_origin.py
+~~~
+and paste following codes:
+~~~
+{}{}
+#!/usr/bin/env python
+
+##
+#
+# Send SET_GPS_GLOBAL_ORIGIN and SET_HOME_POSITION messages
+#
+##
+
+import rospy
+from pymavlink.dialects.v10 import ardupilotmega as MAV_APM
+from mavros.mavlink import convert_to_rosmsg
+from mavros_msgs.msg import Mavlink
+
+# Global position of the origin
+lat = 0 * 1e7   # Terni
+lon = 0 * 1e7   # Terni
+alt = 0.11 * 1e3
+
+class fifo(object):
+    """ A simple buffer """
+    def __init__(self):
+        self.buf = []
+    def write(self, data):
+        self.buf += data
+        return len(data)
+    def read(self):
+        return self.buf.pop(0)
+
+def send_message(msg, mav, pub):
+    """
+    Send a mavlink message
+    """
+    msg.pack(mav)
+    rosmsg = convert_to_rosmsg(msg)
+    pub.publish(rosmsg)
+
+    print("sent message %s" % msg)
+
+def set_global_origin(mav, pub):
+    """
+    Send a mavlink SET_GPS_GLOBAL_ORIGIN message, which allows us
+    to use local position information without a GPS.
+    """
+    target_system = mav.srcSystem
+    #target_system = 0   # 0 --> broadcast to everyone
+    lattitude = lat
+    longitude = lon
+    altitude = alt
+
+    msg = MAV_APM.MAVLink_set_gps_global_origin_message(
+            target_system,
+            lattitude,
+            longitude,
+            altitude)
+
+    send_message(msg, mav, pub)
+
+def set_home_position(mav, pub):
+    """
+    Send a mavlink SET_HOME_POSITION message, which should allow
+    us to use local position information without a GPS
+    """
+    target_system = mav.srcSystem
+    #target_system = 0  # broadcast to everyone
+
+    lattitude = lat
+    longitude = lon
+    altitude = alt
+
+    x = 0
+    y = 0
+    z = 0.11
+    q = [1, 0, 0, 0]   # w x y z
+
+    approach_x = 0
+    approach_y = 0
+    approach_z = 1
+
+    msg = MAV_APM.MAVLink_set_home_position_message(
+            target_system,
+            lattitude,
+            longitude,
+            altitude,
+            x,
+            y,
+            z,
+            q,
+            approach_x,
+            approach_y,
+            approach_z)
+
+    send_message(msg, mav, pub)
+
+if __name__=="__main__":
+    try:
+        rospy.init_node("origin_publisher")
+        mavlink_pub = rospy.Publisher("/mavlink/to", Mavlink, queue_size=20)
+
+        # Set up mavlink instance
+        f = fifo()
+        mav = MAV_APM.MAVLink(f, srcSystem=1, srcComponent=1)
+
+        # wait to initialize
+        while mavlink_pub.get_num_connections() <= 0:
+            pass
+
+        for _ in range(2):
+            rospy.sleep(1)
+            set_global_origin(mav, mavlink_pub)
+            set_home_position(mav, mavlink_pub)
+    except rospy.ROSInterruptException:
+        pass
+~~~
+then modify the home position as your own situation.\n
+4. Set the stream rate\n
+In order to monitor vehicle's state, we need to set thr stream rate to same as ground station. Otherwise, you will noting from the state topic.
+~~~
+{}{}
+rosservice call /mavros/set_stream_rate 0 10 1
+~~~
+5. Use rqt_plot to monitor system state.
+~~~
+{}{}
+rqt_plot
+~~~
+and add following topics:
+~~~
+{}{}
+/vrpn_client_ros/RigidBody1/pose/pose/positon         //the x,y,z data from motion capture system
+
+/vrpn_client_ros/RigidBody1/pose/pose/orientation         //the roll,pitch,yaw from motion capture system
+
+/mavros/local_position/pose/pose/position  //the local x,y,z data of vehicle 
+
+*NOTICE:* If you don't set the home position nor set the stream rate, you will see nothing in mavros topics concerned with vehicle state.
+~~~
+6. First flight with MAVProxy\n
+Now it is time to test your vehicle. Open MAVProxy and make sure it is connect to your vehicle.\n
+Use following command to active it.
+~~~
+{}{}
+loiter // change mode to loiter
+
+arm throttle // the motor is hot
+
+takeoff 0.5 // takeoff to 0.5m relative height
+
+stabilize // change mode to stabilize, the vehicle will stop the motor.
+
+disarm  //lock the motor
+~~~
+
+You can monitor the vehicle's state and modify the PID parameters\n
+
+
+== The End - DING Runze 22\/12\/2019                                                                           
+
+
+
+
+
+

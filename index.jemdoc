@@ -1,0 +1,51 @@
+# jemdoc: menu{MENU.txt}{index.html}
+# jemdoc: nofooter
+= Runze Ding
+
+~~~
+{}{img_left}{Runze3.jpg}{130px}{180px}{alt text}
+PhD Candidate, [https://ris.bme.cityu.edu.hk/ Robotics and Intelligent System Lab]\n
+
+Emails:    drunze2-c@my.cityu.edu.hk\n
+
+ORCID:   [https://orcid.org/0000-0002-1092-3912 0000-0002-1092-3912]\n
+
+Scopus:  [https://www.scopus.com/authid/detail.uri?authorId=56927642800 56927642800]\n
+
+Google Scholar: [https://scholar.google.com/citations?user=KpGa0AEAAAAJ&hl=en&oi=ao Runze Ding]\n
+~~~
+
+
+== Education
+PhD Candidate, City University of Hong Kong, supervised by [https://www.cityu.edu.hk/stfprofile/pakpongc.htm Prof.Pakpong CHIRARATTANANON], 2019-present\n 
+
+M.Phil in Aerospace Propulsion Theory and Engineering, 2019\n
+Nanjing University of Aeronautics and Astronautics\n
+
+B.S       in Aircraft Power Engineering, 2015\n
+Nanjing University of Aeronautics and Astronautics\n
+
+
+== Research
+I am interested in dynamics, control, and estimation in following fields:
+- Aerial Robotics
+-- Quadrotor, Hybrid Locomotion, Aerodynamics-based Navigation and Collision Avoidance, Proximity Effect.
+- Turbine Propulsion System
+
+== Recent Publication
+- \[J] *Ding, R.*, Bai, S., Dong, K., Chirarattananon, P. (2023). Aerodynamic Effect for Collision-Free Reactive Navigation of a
+Small Quadcopter, npj Robotics, under review
+
+- \[J] *Ding, R.*, Jia, H., Chirarattananon, P. (2023). Quadrolltor: A Reconfigurable Quadrotor with Controlled Rolling, IEEE/ASME
+Transactions on Mechatronics, under review. 
+
+- \[J] *Ding, R.*, Hsiao, Y. H., Jia, H., Bai, S., Chirarattananon, P. (2022). Passive wall tracking for a rotorcraft with tilted and
+ducted propellers using proximity effects. IEEE Robotics and Automation Letters, 7(2), 1581-1588.
+
+- \[J] Jia, H., Bai, S., *Ding, R.*, Shu, J., Deng, Y., Khoo, B. L., Chirarattananon, P. (2022). A quadrotor with a passively reconfig-
+urable airframe for hybrid terrestrial locomotion. IEEE/ASME Transactions on Mechatronics, 27(6), 4741-4751.
+
+- \[J] Bai, S., *Ding, R.*, Chirarattananon, P. (2022). A micro aircraft with passive variable-sweep wings. IEEE Robotics and
+Automation Letters, 7(2), 4016-4023.
+
+

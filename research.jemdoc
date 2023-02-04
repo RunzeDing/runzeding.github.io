@@ -1,0 +1,29 @@
+# jemdoc: menu{MENU.txt}{research.html}
+# jemdoc: nofooter
+= Research
+
+== (2023) Aerodynamic Effect for Collision-Free Reactive Navigation of a Small Quadcopter
+~~~
+{}{img_left}{./Research/2023Ducted/2023ducted.jpeg}{400px}{400px}{alt text}
+Under review: Please contact me for details.
+#Abstract: Tiny multirotor vehicles critically rely on real-time onboard feedback to hover stably. While the small size and light weight are advantageous for accessing narrow corridors, the limited payload and endurance impact their ability to carry powerful sensory #and computing units for localization and mapping. This article reports an aerodynamic-based strategy for a ducted rotorcraft to avoid a wall collision and explore unknown environments using only the sensing system that is conventionally conceived minimally required #for hovering. The framework leverages the duct-strengthened interaction between the propeller wake and a vertical surface. The derived momentum theory-based model, when incorporated with the flight dynamics, allows the robot to robustly estimate the obstacle's #distance and direction without using a range sensor or visual measurements. To this end, we devised a flight controller and implemented a reactive navigation method for the robot to fly safely in unexplored environments. A series of flight experiments validated the#detection and collision avoidance ability. Lastly, the potential of the strategy is demonstrated as the robot successfully identified and followed the wall contour to negotiate a staircase in a proof-of-concept flight.
+
+
+~~~
+
+== (2023) Quadrolltor: A Reconfigurable Quadrotor with Controlled Rolling
+~~~
+{}{img_left}{./Research/2023Tmech/Robot.png}{400px}{400px}{alt text}
+Under review: Please contact me for details.
+#Abstract: This article reports an aerial robot: Quadrolltor, with the ability to roll and turn. Existing bimodal quadrotors feature cylindrical rolling cages that are rotationally decoupled from the robot's main rigid body. In contrast, the proposed robot employs #passively reconfigurable structures to enable the second mode of locomotion, tightly coupling the attitude of the robot to the rolling cage. The benefits are precise rolling and turning control as well as improved rolling efficiency. Experiments were conducted to #comprehensively validate the hybrid locomotion and demonstrate the accurate rolling and turning setpoint control for panoramic photography. Moreover, the results of the power measurements show a significant reduction in the cost of transport brought by rolling, #equating to a 15-fold extension in the operational range.
+~~~
+
+
+== (2022) Passive Wall Tracking for a Rotorcraft with Tilted and Ducted Propellers using Proximity Effects
+~~~
+{}{img_left}{./Research/2021RAL/ductedquad2.png}{400px}{400px}{alt text}
+Abstract: The letter proposes a passive wall following strategy for a multirotor robot based on the aerodynamic interaction between the propeller wake and the vertical surface. To reinforce the proximity effects, a vehicle with tilted and ducted propellers is introduced. Momentum theory is employed to elucidate the changes in horizontal and vertical components of the propelling thrust in the vicinity of a wall. The modeling and force measurements, when combined with the analysis of the flight dynamics, reveal the existence of a stable distance between the robot and a wall when only the attitude and altitude of the robot are controlled. Flight experiments were conducted to validate that the stable distance between the robot and the wall can be manipulated through the attitude setpoint or control gain, eliminating the need for position feedback. The outcomes enable a human operator to effortlessly fly the robot safely along a corridor without a collision in the absence of vision or other sensing instruments.\n\n\n
+
+
+IEEE Robotics and Automation Letters, 7(2), 1581-1588, Presented at ICRA2022.   [https://www.youtube.com/watch?v=BUDamNPvaOY Video-Youtube]
+~~~

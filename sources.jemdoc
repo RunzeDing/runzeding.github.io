@@ -1,0 +1,55 @@
+# jemdoc: menu{MENU.txt}{sources.html}
+# jemdoc: nofooter
+= Sources
+
+Some useful materials and links in this page for study purpose. All sources are collected on the Internet. This page only provide links to online sources for study purpose!
+
+*Disclaimer:* The copy right belongs to the author of materials and links respectively!!!Please contact me to remove it if there is any conflict. 
+
+== Tutorial & Technotes
+I wrote some notes and summaries about previous work to make sure I can reproduct it.
+\n
+[./Tutorial.html Tutotial 1]: Indoor Navigation and Control of Bebop2 running Arducopter with Feedback From Optitrack - Set up.
+
+Sorry I would not update this part any more since I don't have enough time for it...
+== Control Theory
+
+under construction
+
+== Mathematics
+
+
+under construction
+== Estimation
+
+[http://www.cs.unc.edu/~welch/kalman/ The Kalman Filter] Some tutorials, referencess, and research related to the Kalman filter.
+
+== Mechanics
+[https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Book%3A_Classical_Mechanics_(Tatum) Classical Mechanics_Prof. Jeremy Tatum]\n
+[https://ocw.mit.edu/courses/16-61-aerospace-dynamics-spring-2003/pages/lecture-notes/ MIT-Opensource-AerospaceDynamics]
+
+== Programming
+\n
+Just in case I mix up with syntax : ), link is fast than books. 
+\n 
+
+[https://docs.python.org/3/tutorial/ Python]
+\n
+[https://www.w3schools.com/cpp/    C++]
+\n
+[https://www.tutorialspoint.com/matlab/matlab_syntax.htm Matlab]
+\n
+[http://jemdoc.jaboc.net/example.html Jemdoc Example Page] 
+
+== Tools
+[http://detexify.kirelabs.org/classify.html Detexify - Latex Symbol Classify]
+\n
+[http://www.tlhiv.org/rast2vec/ Convert PNG/JPEG (Raster) to EPS/PDF (Vector) Format]
+\n
+[https://www.andre-gaschler.com/rotationconverter/ 3D Rotation Converter] Rotation Matrix <-> Euler Angle <-> Quaternion.
+\n
+[https://www.imgonline.com.ua/eng/color-temperature-for-photo.php ImageWhiteBalance] Correct the white balance of images.
+\n
+[https://mycolor.space/?hex=%239B6DE5&sub=1 Color Space] Generating related color map.
+\n
+[https://www.phrasebank.manchester.ac.uk/ Academic PhraseBanck] 
